@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guju Burgers - Smash Burgers</title>
-<meta name="description" content="Guju Burgers: smash burgers aplastadas a mano. Big Mac, Oklahoma Burger y Patty Melt.">
+<title>Guga Burgers - Smash Burgers</title>
+<meta name="description" content="Guga Burgers: smash burgers aplastadas a mano. Big Mac, Oklahoma Burger y Patty Melt.">
 <link rel="icon" href="logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,13 +184,13 @@ aside.show{transform:none}
 <div class="ticker" aria-hidden="true"><div class="track" id="ticker1"></div></div>
 
 <nav>
-  <a class="logo" href="#top"><img src="logo.webp" alt="">GUJU<span>.</span></a>
+  <a class="logo" href="#top"><img src="logo.webp" alt="">GUGA<span>.</span></a>
   <button class="cart" id="openCart" aria-label="Ver pedido">🍔 Pedido <b id="count">0</b></button>
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-logo"><img src="logo.webp" alt="Logo Guju Burgers"></div>
-  <h1 class="word">GUJU <span class="o">BURGERS</span></h1>
+  <div class="hero-logo"><img src="logo.webp" alt="Logo Guga Burgers"></div>
+  <h1 class="word">GUGA <span class="o">BURGERS</span></h1>
   <div class="sub">SMASH BURGERS</div>
   <div class="tag hand">aplastadas en la plancha, comidas con las dos manos</div>
   <a class="btn red" href="#menu">Ver las burgers ↓</a>
@@ -264,9 +264,9 @@ aside.show{transform:none}
   </div>
 </section>
 
-<section class="band hz" id="movida" aria-label="La movida Guju">
+<section class="band hz" id="movida" aria-label="La movida Guga">
   <div class="head reveal">
-    <h2>La movida Guju</h2>
+    <h2>La movida Guga</h2>
     <p class="hand">seguí bajando, no frenes.</p>
   </div>
   <div class="viewport" id="hzview"><div class="rail" id="rail"></div></div>
@@ -281,8 +281,8 @@ aside.show{transform:none}
 </section>
 
 <footer>
-  <div class="giant" aria-hidden="true">GUJU</div>
-  <div class="legal"><span>© 2026 Guju Burgers. Todos los derechos reservados.</span><span>Smash burgers</span></div>
+  <div class="giant" aria-hidden="true">GUGA</div>
+  <div class="legal"><span>© 2026 Guga Burgers. Todos los derechos reservados.</span><span>Smash burgers</span></div>
 </footer>
 
 <div class="overlay" id="overlay"></div>
@@ -367,7 +367,7 @@ $('#checkout').onclick = ()=>{
   const ids = Object.keys(cart);
   const lines = ids.map(i=>{const p=PRODUCTS.find(x=>x.id===i);return `${cart[i]}x ${p.name} - ${fmt(p.price*cart[i])}`});
   const total = ids.reduce((a,i)=>a+cart[i]*PRODUCTS.find(p=>p.id===i).price,0);
-  const msg = `Hola Guju Burgers! Quiero pedir:\n${lines.join('\n')}\nTotal: ${fmt(total)}`;
+  const msg = `Hola Guga Burgers! Quiero pedir:\n${lines.join('\n')}\nTotal: ${fmt(total)}`;
   if(WHATSAPP) window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
   else alert(msg + '\n\n(Configurá WHATSAPP en el código para enviar pedidos)');
 };
