@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guju Burgers - Smash Burgers</title>
-<meta name="description" content="Guju Burgers: smash burgers. Elegí entre la Big Mac y la Premium.">
+<meta name="description" content="Guju Burgers: smash burgers. Elegí entre la Big Mac y la Oklahoma.">
 <link rel="icon" href="logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -80,6 +80,7 @@ section{scroll-margin-top:120px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:32px}
 .card{background:#fff;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px}
 .pic{position:relative;border-radius:10px;height:230px;background:linear-gradient(135deg,#8d8f98,#cfd0d6 50%,#8d8f98);display:grid;place-items:center;overflow:hidden}
+.pic img{width:100%;height:100%;object-fit:cover}
 .add{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:8px;background:var(--brand);color:#fff;font-size:18px;font-weight:700}
 .add:hover{background:var(--brand-dark)}
 .card h3{font-size:17px}
@@ -155,7 +156,7 @@ footer{background:#fff;text-align:center;padding:22px;font-size:14px;color:var(-
   <div>
     <img class="hero-logo" src="logo.webp" alt="Logo Guju Burgers">
     <h1>GUJU BURGERS</h1>
-    <p>Smash burgers · Big Mac y Premium</p>
+    <p>Smash burgers · Big Mac y Oklahoma</p>
   </div>
 </div>
 
@@ -163,7 +164,7 @@ footer{background:#fff;text-align:center;padding:22px;font-size:14px;color:var(-
   <button class="arrow" id="prev" aria-label="Anterior">‹</button>
   <div class="scroller" id="scroller">
     <a href="#clasicas" class="active">Big Mac</a>
-    <a href="#premium">Premium</a>
+    <a href="#oklahoma">Oklahoma</a>
   </div>
   <button class="arrow" id="next" aria-label="Siguiente">›</button>
 </div>
@@ -174,9 +175,9 @@ footer{background:#fff;text-align:center;padding:22px;font-size:14px;color:var(-
     <div class="grid" data-list="clasica"></div>
   </section>
 
-  <section id="premium">
-    <h2 class="sec-title">Premium</h2>
-    <div class="grid" data-list="premium"></div>
+  <section id="oklahoma">
+    <h2 class="sec-title">Oklahoma Burger</h2>
+    <div class="grid" data-list="oklahoma"></div>
   </section>
 </main>
 
@@ -198,9 +199,8 @@ const PRODUCTS = [
   { id:'clasica', cat:'clasica', name:'Big Mac',
     desc:'Smash burger x2 + cheddar x4 + mayonesa + ketchup', price:490,
     layers:['bun-t','cheese','patty','cheese','patty second','bun-b'] },
-  { id:'premium', cat:'premium', name:'Premium',
-    desc:'Smash burger x2 + lechuga + tomate + cebolla + pepinillos + cheddar + salsa de la casa', price:510,
-    layers:['bun-t','lettuce','tomato','onion','cheese','patty','patty second','bun-b'] },
+  { id:'oklahoma', cat:'oklahoma', name:'Oklahoma Burger',
+    desc:'Smash burger x2 + cebolla caramelizada + cheddar', price:510, img:'oklahoma.webp' },
 ];
 const WHATSAPP = ''; // ej: '59899123456' para enviar el pedido por WhatsApp
 /* ========================================================= */
@@ -211,7 +211,7 @@ const cart = {};
 
 function card(p){
   return `<article class="card">
-    <div class="pic"><div class="burger">${p.layers.map(l=>`<div class="${l}"></div>`).join('')}</div>
+    <div class="pic">${p.img?`<img src="${p.img}" alt="${p.name}">`:`<div class="burger">${p.layers.map(l=>`<div class="${l}"></div>`).join('')}</div>`}
       <button class="add" data-id="${p.id}" aria-label="Agregar ${p.name}">+</button></div>
     <h3>${p.name}</h3><p>${p.desc}</p><div class="price">${fmt(p.price)}</div></article>`;
 }
