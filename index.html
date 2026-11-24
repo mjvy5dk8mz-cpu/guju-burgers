@@ -242,6 +242,7 @@ aside.show{transform:none}
           <g fill="#fff8ea" stroke="#1b1b1b" stroke-width="2"><ellipse cx="250" cy="300" rx="7" ry="4"/><ellipse cx="300" cy="280" rx="7" ry="4" transform="rotate(20 300 280)"/><ellipse cx="350" cy="296" rx="7" ry="4" transform="rotate(-15 350 296)"/><ellipse cx="320" cy="320" rx="7" ry="4"/></g>
         </g>
         <image id="budF" href="bud0.webp" x="40" y="30" width="520" height="462"/>
+        <image id="budP" href="bud-press.webp" x="60" y="20" width="480" height="503" opacity="0"/>
         <g id="pow" opacity="0" transform="translate(500 300)">
           <path d="M0 -60 L16 -20 L58 -34 L30 0 L62 30 L18 24 L8 66 L-10 26 L-52 40 L-28 4 L-60 -24 L-18 -18 Z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="5"/>
           <text x="0" y="12" text-anchor="middle" font-family="Titan One" font-size="26" fill="#ef3e2b" stroke="#1b1b1b" stroke-width="1.5">¡PAF!</text>
@@ -395,6 +396,7 @@ const setStep=i=>{document.querySelectorAll('.step').forEach((e,j)=>e.classList.
 /* tira horizontal */
 const POSTS=[
  {t:'El Buda manda',d:'Nuestra mascota no negocia: una burger en cada mano.',img:'logo.webp',logo:true,r:'-2deg'},
+ {t:'Smash en la plancha',d:'Prensa, queso derretido y a comer.',img:'bud-press.webp',logo:true,r:'1deg'},
  {t:'Big Mac',d:'Doble carne, cheddar, lechuga y salsa especial.',img:'bigmac.webp',r:'1.5deg'},
  {t:'Oklahoma Burger',d:'Cebolla aplastada junto con la carne hasta caramelizar.',img:'oklahoma.webp',r:'-1deg'},
  {t:'Patty Melt',d:'Hamburguesa y sándwich tostado en uno solo.',img:'pattymelt.webp',r:'2deg'},
@@ -423,7 +425,8 @@ if(window.gsap&&window.ScrollTrigger&&!reduce){
     .to('#pow',{opacity:1,scale:1.2,svgOrigin:'500 300',duration:.25},2)
     .to('#steam',{opacity:1,y:-20,duration:.6},2.3)
     .to('#pow',{opacity:0,duration:.3},2.6)
-    .to('#budF',{opacity:0,duration:.4},3)
+    .to('#budF',{opacity:0,duration:.4},3).to('#budP',{opacity:1,duration:.4},3)
+    .to('#budP',{opacity:0,duration:.5},5)
     .to('#crust',{opacity:1,duration:.5},3)
     .from('#cheese',{y:-220,duration:.8,ease:'bounce.out'},3.6).to('#cheese',{opacity:1,duration:.1},3.6)
     .to('#steam',{opacity:0,y:-60,duration:.6},5)
