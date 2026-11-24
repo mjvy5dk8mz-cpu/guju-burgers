@@ -213,9 +213,9 @@ const PRODUCTS = [
     desc:'Smash burger x2 + cebolla caramelizada + cheddar', price:400, img:'oklahoma.webp',
     about:'Hamburguesa típica de Oklahoma (EE. UU.): la cebolla fina se aplasta junto con la carne en la plancha y se cocina con ella, quedando dulce, caramelizada y llena de sabor.' },
   { id:'pattymelt', cat:'pattymelt', name:'Patty Melt',
-    desc:'Smash burger x2 + cheddar + cebolla caramelizada + pan tostado', price:400,
+    desc:'Smash burger x2 + cheddar + cebolla caramelizada + pan tostado', price:400, img:'pattymelt.webp', ratio:'16/9',
     about:'Mitad hamburguesa, mitad sándwich tostado: carne jugosa, queso cheddar bien derretido y cebolla caramelizada entre dos rebanadas de pan doradas en la plancha con manteca.',
-    layers:['toast','cheese','patty','onion-c','patty second','cheese','toast'] },
+     },
 ];
 const WHATSAPP = ''; // ej: '59899123456' para enviar el pedido por WhatsApp
 /* ========================================================= */
@@ -226,7 +226,7 @@ const cart = {};
 
 function card(p){
   return `<article class="card">
-    <div class="pic">${p.img?`<img src="${p.img}" alt="${p.name}">`:`<div class="burger">${p.layers.map(l=>`<div class="${l}"></div>`).join('')}</div>`}
+    <div class="pic"${p.ratio?` style="aspect-ratio:${p.ratio}"`:''}>${p.img?`<img src="${p.img}" alt="${p.name}">`:`<div class="burger">${p.layers.map(l=>`<div class="${l}"></div>`).join('')}</div>`}
       <button class="add" data-id="${p.id}" aria-label="Agregar ${p.name}">+</button></div>
     <h3>${p.name}</h3><p>${p.desc}</p><p class="about">${p.about||''}</p><div class="price">${fmt(p.price)}</div></article>`;
 }
