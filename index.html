@@ -242,7 +242,7 @@ aside.show{transform:none}
           <path d="M190 300 C210 262 260 250 290 250" stroke="#f9c784" stroke-width="12" fill="none" stroke-linecap="round"/>
           <g fill="#fff8ea" stroke="#1b1b1b" stroke-width="2"><ellipse cx="250" cy="300" rx="7" ry="4"/><ellipse cx="300" cy="280" rx="7" ry="4" transform="rotate(20 300 280)"/><ellipse cx="350" cy="296" rx="7" ry="4" transform="rotate(-15 350 296)"/><ellipse cx="320" cy="320" rx="7" ry="4"/></g>
         </g>
-        <image id="budF" href="bud0.webp" x="40" y="30" width="520" height="462"/>
+        
         <g id="pow" opacity="0" transform="translate(500 300)">
           <path d="M0 -60 L16 -20 L58 -34 L30 0 L62 30 L18 24 L8 66 L-10 26 L-52 40 L-28 4 L-60 -24 L-18 -18 Z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="5"/>
           <text x="0" y="12" text-anchor="middle" font-family="Titan One" font-size="26" fill="#ef3e2b" stroke="#1b1b1b" stroke-width="1.5">¡PAF!</text>
@@ -388,7 +388,7 @@ render();
 /* pasos del smash */
 const STEPS=[
  ['La bola','Arrancamos con una bola de carne fresca, sal y nada más. Así de simple.','paso uno'],
- ['¡Smash!','El Buda la aplasta contra la plancha bien caliente, con la espátula y todo su peso.','paso dos'],
+ ['¡Smash!','La aplastamos contra la plancha bien caliente, con la espátula y todo el peso.','paso dos'],
  ['La costra','Los bordes se vuelven encaje crocante y arriba va el cheddar a derretirse.','paso tres'],
  ['Armado','Pan, pepinillos, salsa y tapa. A comer con las dos manos, como el Buda.','paso cuatro'],
 ];
@@ -418,17 +418,13 @@ if(window.gsap&&window.ScrollTrigger&&!reduce){
   ScrollTrigger.create({onUpdate:s=>{const v=s.getVelocity();gsap.to(tp,{timeScale:1+Math.min(Math.abs(v)/300,6)*(v<0?-1:1),duration:.2,overwrite:true});gsap.to(tp,{timeScale:1,duration:1,delay:.2})}});
 
   const O='300 440';
-  const FR=[];for(let i=0;i<9;i++){const im=new Image();im.src='bud'+i+'.webp';FR.push(im.src)}
-  const F={i:0};let cur=0;const budF=document.getElementById('budF');
-  gsap.set('#meat',{opacity:0});
   const tl=gsap.timeline({scrollTrigger:{trigger:'#smash',start:'top top',end:'+=2600',scrub:.8,pin:true,
     onUpdate:s=>setStep(s.progress<.18?0:s.progress<.45?1:s.progress<.72?2:3)}});
   tl.to('#bigword',{xPercent:-40,ease:'none',duration:10},0)
-    .to(F,{i:5,duration:2.6,ease:'none',onUpdate:()=>{const k=Math.round(F.i);if(k!==cur){cur=k;budF.setAttribute('href','bud'+k+'.webp')}}},.4)
+    .to('#meat',{scaleX:2.1,scaleY:.4,svgOrigin:O,duration:.5,ease:'power4.out'},2)
     .to('#pow',{opacity:1,scale:1.2,svgOrigin:'500 300',duration:.25},2)
     .to('#steam',{opacity:1,y:-20,duration:.6},2.3)
     .to('#pow',{opacity:0,duration:.3},2.6)
-    .to('#budF',{opacity:0,duration:.4},3)
     .to('#crust',{opacity:1,duration:.5},3)
     .from('#cheese',{y:-220,duration:.8,ease:'bounce.out'},3.6).to('#cheese',{opacity:1,duration:.1},3.6)
     .to('#steam',{opacity:0,y:-60,duration:.6},5)
