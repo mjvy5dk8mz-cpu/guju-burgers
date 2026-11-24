@@ -58,6 +58,203 @@ nav a.active{color:var(--ink);font-weight:600}
 main{max-width:1100px;margin:0 auto;padding:24px 18px 40px}
 section{scroll-margin-top:120px}
 
+/* hours */
+.hours{background:#fff;border-radius:12px;padding:22px 18px;margin-bottom:28px}
+.hours-head{display:flex;gap:14px;align-items:flex-start}
+.hours-head svg{width:22px;height:22px;margin-top:6px}
+.hours h2{font-size:20px}
+.hours small{color:var(--muted);font-size:13px}
+.state{margin-left:auto;font-size:12px;border:1px solid;border-radius:20px;padding:2px 10px;height:fit-content}
+.state.open{color:var(--ok);background:#e8f7ee}
+.state.closed{color:var(--bad);background:#fdecec}
+.days{margin-top:16px;display:grid;gap:8px}
+.day{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:8px;padding:12px 16px}
+.day.today b::after{content:"Hoy";margin-left:10px;font-size:12px;background:#e9e8f2;padding:2px 8px;border-radius:6px;font-weight:500}
+.day span{font-family:'Courier New',monospace;font-weight:700}
+.more{display:block;margin:14px auto 0;background:none;color:var(--ink);font-size:14px}
+#alldays{display:none}
+#alldays.show{display:grid}
+
+/* products */
+.sec-title{color:#fff;font-size:22px;margin:8px 0 14px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:32px}
+.card{background:#fff;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.pic{position:relative;border-radius:10px;height:230px;background:linear-gradient(135deg,#8d8f98,#cfd0d6 50%,#8d8f98);display:grid;place-items:center;overflow:hidden}
+.add{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:8px;background:var(--brand);color:#fff;font-size:18px;font-weight:700}
+.add:hover{background:var(--brand-dark)}
+.card h3{font-size:17px}
+.card p{text-transform:uppercase;font-size:13px;color:var(--muted);letter-spacing:.2px;flex:1}
+.price{font-family:'Poppins';font-weight:600;font-size:17px}
+
+/* css burger */
+.burger{width:170px;display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 10px 8px rgba(0,0,0,.35))}
+.bun-t{width:150px;height:60px;background:radial-gradient(circle at 35% 25%,#f0a343,#c96a1c);border-radius:80px 80px 12px 12px;position:relative}
+.bun-t::after{content:"";position:absolute;top:14px;left:38px;width:6px;height:3px;background:#fde7b8;border-radius:50%;box-shadow:24px 6px 0 #fde7b8,50px -2px 0 #fde7b8,64px 12px 0 #fde7b8,14px 20px 0 #fde7b8}
+.lettuce{width:164px;height:12px;background:#6fb83c;border-radius:10px;margin-top:-4px;clip-path:polygon(0 0,100% 0,100% 60%,92% 100%,80% 60%,68% 100%,56% 60%,44% 100%,32% 60%,20% 100%,8% 60%,0 100%)}
+.tomato{width:148px;height:9px;background:#d9382a;border-radius:6px;margin-top:-2px}
+.onion{width:140px;height:5px;background:#f1e4ef;border-radius:6px;margin-top:-1px}
+.cheese{width:162px;height:11px;background:#f8b81c;margin-top:-2px;clip-path:polygon(0 0,100% 0,100% 45%,88% 45%,84% 100%,76% 45%,0 45%)}
+.patty{width:152px;height:16px;background:linear-gradient(#5b3322,#3a1f14);border-radius:10px;margin-top:-3px}
+.patty.second{margin-top:-5px}
+.bun-b{width:148px;height:20px;background:linear-gradient(#e0903a,#b85d17);border-radius:6px 6px 24px 24px;margin-top:-3px}
+
+/* cart drawer */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.2s;z-index:40}
+.overlay.show{opacity:1;pointer-events:auto}
+aside{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;z-index:50;transform:translateX(100%);transition:.25s;display:flex;flex-direction:column}
+aside.show{transform:none}
+aside header{position:static;box-shadow:none;border-bottom:1px solid var(--line);padding:16px 20px;height:auto}
+.close{background:none;font-size:24px;color:var(--muted)}
+.items{flex:1;overflow:auto;padding:16px 20px;display:grid;gap:14px;align-content:start}
+.empty{color:var(--muted);text-align:center;margin-top:40px}
+.item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty button{width:26px;height:26px;border-radius:6px;background:#e9e8f2;font-weight:700}
+.foot{padding:16px 20px;border-top:1px solid var(--line);display:grid;gap:12px}
+.total{display:flex;justify-content:space-between;font-family:'Poppins';font-weight:600;font-size:18px}
+.foot .btn{width:100%;padding:13px}
+.foot .btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* splash de carga */
+#splash{position:fixed;inset:0;z-index:100;background:#f2f3f5;display:grid;place-items:center;transition:opacity .5s,visibility .5s}
+#splash.hide{opacity:0;visibility:hidden}
+.splash-in{display:flex;flex-direction:column;align-items:center;gap:22px}
+.splash-in img{width:110px;height:110px;object-fit:contain;animation:pop 1.2s ease-in-out infinite}
+.pan{position:relative;width:140px;height:30px;animation:flip 1.2s ease-in-out infinite;transform-origin:30% 50%}
+.pan::before{content:"";position:absolute;left:0;top:0;width:80px;height:20px;background:#1c1b1f;border-radius:2px 2px 20px 20px}
+.pan::after{content:"";position:absolute;left:86px;top:2px;width:54px;height:7px;background:#1c1b1f;border-radius:3px}
+.shadow{width:70px;height:7px;border-radius:4px;background:#d8d9de;animation:sh 1.2s ease-in-out infinite}
+@keyframes flip{0%,100%{transform:rotate(0)}40%{transform:rotate(-14deg)}60%{transform:rotate(-14deg)}}
+@keyframes pop{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes sh{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.7);opacity:.6}}
+
+footer{background:#fff;text-align:center;padding:22px;font-size:14px;color:var(--muted)}
+
+@media(max-width:640px){
+  header{padding:8px 14px}
+  nav .hide-m{display:none}
+  .btn.login{padding:8px 12px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<div id="splash"><div class="splash-in"><img src="logo.webp" alt=""><div class="pan"></div><div class="shadow"></div></div></div>
+
+<header>
+  <div class="logo"><img class="logo-img" src="logo.webp" alt="Guju Burgers"><span>Guju Burgers</span></div>
+  <nav>
+    <button class="cart-btn" id="openCart" aria-label="Carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+      <span class="badge" id="badge" hidden>0</span>
+    </button>
+  </nav>
+</header>
+
+<div class="hero" id="inicio">
+  <div>
+    <img class="hero-logo" src="logo.webp" alt="Logo Guju Burgers">
+    <h1>GUJU BURGERS</h1>
+    <p>Smash burgers · Big Mac y Premium</p>
+  </div>
+</div>
+
+<div class="cats">
+  <button class="arrow" id="prev" aria-label="Anterior">‹</button>
+  <div class="scroller" id="scroller">
+    <a href="#clasicas" class="active">Big Mac</a>
+    <a href="#premium">Premium</a>
+  </div>
+  <button class="arrow" id="next" aria-label="Siguiente">›</button>
+</div>
+
+<main id="menu">
+  <section id="clasicas">
+    <h2 class="sec-title">Big Mac</h2>
+    <div class="grid" data-list="clasica"></div>
+  </section>
+
+  <section id="premium">
+    <h2 class="sec-title">Premium</h2>
+    <div class="grid" data-list="premium"></div>
+  </section>
+</main>
+
+<footer>© 2026 Guju Burgers. Todos los derechos reservados.</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside id="drawer">
+  <header><h2 class="poppins" style="font-size:18px">Tu pedido</h2><button class="close" id="closeCart">×</button></header>
+  <div class="items" id="items"></div>
+  <div class="foot">
+    <div class="total"><span>Total</span><span id="total">$ 0,00</span></div>
+    <button class="btn" id="checkout" disabled>Hacer pedido</button>
+  </div>
+</aside>
+
+<script>
+/* ====== CONFIG: editá precios y textos acá ====== */
+const PRODUCTS = [
+  { id:'clasica', cat:'clasica', name:'Big Mac',
+    desc:'Smash burger x2 + cheddar x4 + mayonesa + ketchup', price:490,
+    layers:['bun-t','cheese','patty','cheese','patty second','bun-b'] },
+  { id:'premium', cat:'premium', name:'Premium',
+    desc:'Smash burger x2 + lechuga + tomate + cebolla + pepinillos + cheddar + salsa de la casa', price:510,
+    layers:['bun-t','lettuce','tomato','onion','cheese','patty','patty second','bun-b'] },
+];
+const WHATSAPP = ''; // ej: '59899123456' para enviar el pedido por WhatsApp
+/* ========================================================= */
+
+const $ = s => document.querySelector(s);
+const fmt = n => '$ ' + n.toLocaleString('es-UY',{minimumFractionDigits:2});
+const cart = {};
+
+function card(p){
+  return `<article class="card">
+    <div class="pic"><div class="burger">${p.layers.map(l=>`<div class="${l}"></div>`).join('')}</div>
+      <button class="add" data-id="${p.id}" aria-label="Agregar ${p.name}">+</button></div>
+    <h3>${p.name}</h3><p>${p.desc}</p><div class="price">${fmt(p.price)}</div></article>`;
+}
+document.querySelectorAll('[data-list]').forEach(el=>{
+  const k = el.dataset.list;
+  el.innerHTML = PRODUCTS.filter(p=>k==='all'||p.cat===k).map(card).join('');
+});
+document.addEventListener('click',e=>{
+  const b = e.target.closest('.add'); if(!b) return;
+  cart[b.dataset.id] = (cart[b.dataset.id]||0)+1; render(); openCart();
+});
+
+function render(){
+  const ids = Object.keys(cart);
+  const count = ids.reduce((a,i)=>a+cart[i],0);
+  const total = ids.reduce((a,i)=>a+cart[i]*PRODUCTS.find(p=>p.id===i).price,0);
+  $('#badge').hidden = !count; $('#badge').textContent = count;
+  $('#total').textContent = fmt(total);
+  $('#checkout').disabled = !count;
+  $('#items').innerHTML = count ? ids.map(i=>{
+    const p = PRODUCTS.find(x=>x.id===i);
+    return `<div class="item"><div><b>${p.name}</b><div class="qty">
+      <button data-m="${i}">−</button><span>${cart[i]}</span><button data-p="${i}">+</button></div></div>
+      <b>${fmt(p.price*cart[i])}</b></div>`;
+  }).join('') : '<p class="empty">Tu carrito está vacío</p>';
+}
+$('#items').addEventListener('click',e=>{
+  const m=e.target.dataset.m, p=e.target.dataset.p;
+  if(m){ if(--cart[m]<=0) delete cart[m]; }
+  if(p){ cart[p]++; }
+  render();
+});
+$('#checkout').onclick = ()=>{
+  const lines = Object.keys(cart).map(i=>{const p=PRODUCTS.find(x=>x.id===i);return `${cart[i]}x ${p.name} - ${fmt(p.price*cart[i])}`});
+  const total = Object.keys(cart).reduce((a,i)=>a+cart[i]*PRODUCTS.find(p=>p.id===i).price,0);
+  const msg = `Hola Guju Burgers! Quiero pedir:\n${lines.join('\n')}\nTotal: ${fmt(total)}`;
+  if(WHATSAPP) window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
+  else alert(msg + '\n\n(Configurá WHATSAPP en el código para enviar pedidos)');
+};
+function openCart(){ $('#drawer').classList.add('show'); $('#overlay').classList.add('show'); }
+function closeCart(){ $('#drawer').classList.remove('show'); $('#overlay').classList.remove('show'); }
+$('#openCart').onclick = openCart; $('#closeCart').onclick = closeCart; $('#overlay').onclick = closeCart;
+
 /* category scroller + scrollspy */
 $('#prev').onclick = ()=>$('#scroller').scrollBy({left:-150});
 $('#next').onclick = ()=>$('#scroller').scrollBy({left:150});
