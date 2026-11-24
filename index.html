@@ -45,13 +45,21 @@ nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:3px solid var
 /* hero */
 .hero{background:var(--sun);overflow:hidden;position:relative;display:grid;place-items:center;text-align:center;padding:48px 16px 90px;border-bottom:3px solid var(--ink);background-image:radial-gradient(circle,rgba(0,0,0,.09) 2px,transparent 2.5px);background-size:22px 22px}
 .hero-logo{width:clamp(170px,24vw,290px);aspect-ratio:1;background:#fff;border:4px solid var(--ink);border-radius:50%;padding:10px;box-shadow:8px 8px 0 var(--ink)}
-.hero-scene{position:relative;display:grid;justify-items:center;padding-bottom:40px}
-.slam{position:relative;z-index:2;transform-origin:50% 100%;animation:slam 2.4s cubic-bezier(.5,0,.8,.4) infinite}
-.patty{position:absolute;bottom:2px;width:clamp(170px,23vw,270px);height:38px;background:#9c5b3a;border:4px solid var(--ink);border-radius:50%;box-shadow:0 7px 0 var(--ink);animation:flat 2.4s infinite}
-.paf{position:absolute;right:-26%;top:8%;z-index:3;font-family:"Titan One";font-size:clamp(28px,6vw,52px);color:#fff;background:var(--tomato,#ef3e2b);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:2px 12px;border-radius:12px;opacity:0;transform:rotate(10deg);animation:paf 2.4s infinite}
-@keyframes slam{0%,10%{transform:translateY(-14px) rotate(-5deg)}45%{transform:translateY(-34px) rotate(-7deg)}58%{transform:translateY(22px) scale(1.06,.88) rotate(3deg)}66%{transform:translateY(14px) scale(1.04,.92)}80%,100%{transform:translateY(-14px) rotate(-5deg)}}
-@keyframes flat{0%,52%{transform:scale(1,1)}58%,75%{transform:scale(1.35,.55)}100%{transform:scale(1,1)}}
-@keyframes paf{0%,56%{opacity:0;transform:rotate(10deg) scale(.4)}60%{opacity:1;transform:rotate(10deg) scale(1.15)}75%{opacity:1;transform:rotate(10deg) scale(1)}85%,100%{opacity:0;transform:rotate(10deg) scale(1)}}
+.hero-cartoon{width:clamp(280px,46vw,470px);height:auto;display:block;margin:0 auto;overflow:visible}
+.hero-cartoon .arm{transform-origin:215px 200px;animation:armswing 2.4s infinite}
+.hero-cartoon .bhead{transform-origin:150px 180px;animation:headswing 2.4s infinite}
+.hero-cartoon .bbody{transform-origin:150px 360px;animation:bodysq 2.4s infinite}
+.hero-cartoon .ball{transform-origin:294px 360px;animation:ballflat 2.4s infinite}
+.hero-cartoon .fa{animation:faceA 2.4s infinite}
+.hero-cartoon .fb{opacity:0;animation:faceB 2.4s infinite}
+.hero-cartoon .paf{transform-origin:350px 220px;opacity:0;animation:paf 2.4s infinite}
+@keyframes armswing{0%{transform:rotate(-140deg)}35%{transform:rotate(-172deg)}50%{transform:rotate(-30deg);animation-timing-function:ease-out}60%,68%{transform:rotate(-30deg)}92%,100%{transform:rotate(-140deg)}}
+@keyframes headswing{0%{transform:rotate(0)}35%{transform:rotate(-7deg)}50%{transform:rotate(9deg)}68%{transform:rotate(9deg)}92%,100%{transform:rotate(0)}}
+@keyframes bodysq{0%,48%{transform:scale(1,1)}52%{transform:scale(1.04,.94)}62%,100%{transform:scale(1,1)}}
+@keyframes ballflat{0%,49%{transform:scale(1,1)}52%,76%{transform:scale(2.1,.4)}88%,100%{transform:scale(1,1)}}
+@keyframes faceA{0%,47%{opacity:1}48%,70%{opacity:0}71%,100%{opacity:1}}
+@keyframes faceB{0%,47%{opacity:0}48%,70%{opacity:1}71%,100%{opacity:0}}
+@keyframes paf{0%,49%{opacity:0;transform:scale(.3) rotate(8deg)}53%{opacity:1;transform:scale(1.2) rotate(8deg)}62%,72%{opacity:1;transform:scale(1) rotate(8deg)}80%,100%{opacity:0;transform:scale(1) rotate(8deg)}}
 .hero-logo img{width:100%;height:100%;object-fit:contain}
 @keyframes bob{50%{transform:translateY(-12px) rotate(-3deg)}}
 .word{font-size:clamp(56px,13vw,170px);color:#fff;-webkit-text-stroke:clamp(3px,.5vw,6px) var(--ink);paint-order:stroke fill;text-shadow:clamp(4px,.8vw,10px) clamp(4px,.8vw,10px) 0 var(--ink);line-height:.9;display:block;margin-top:22px}
@@ -196,7 +204,13 @@ aside.show{transform:none}
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-scene"><div class="slam"><div class="hero-logo"><img src="logo.webp" alt="Logo Guga Burgers"></div></div><div class="patty"></div><div class="paf" aria-hidden="true">¡PAF!</div></div>
+  <svg class="hero-cartoon" viewBox="0 0 440 420" role="img" aria-label="El Buda aplastando una burger con la espatula">
+    <rect x="10" y="360" width="190" height="34" rx="6" fill="#6b4fa8" stroke="#1b1b1b" stroke-width="6"/>
+    <rect x="200" y="360" width="230" height="34" rx="6" fill="#2b2b2b" stroke="#1b1b1b" stroke-width="6"/>
+    <ellipse class="ball" cx="294" cy="334" rx="30" ry="26" fill="#9c5b3a" stroke="#1b1b1b" stroke-width="6"/>
+    <g id="budHero"></g>
+    <g class="paf"><path d="M350 150 l14 -34 l14 26 l30 -22 l-6 36 l32 4 l-28 22 l18 30 l-36 -10 l-10 34 l-20 -30 l-34 14 l10 -34 l-34 -12 z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/><text x="357" y="212" text-anchor="middle" font-family="Titan One" font-size="38" fill="#ef3e2b" stroke="#1b1b1b" stroke-width="1.5" transform="rotate(-8 357 212)">PAF!</text></g>
+  </svg>
   <h1 class="word">GUGA <span class="o">BURGERS</span></h1>
   <div class="sub">SMASH BURGERS</div>
   <div class="tag hand">aplastadas en la plancha, comidas con las dos manos</div>
@@ -214,7 +228,7 @@ aside.show{transform:none}
       <div class="dots" id="dots" aria-hidden="true"></div>
     </div>
     <div class="stage" aria-hidden="true">
-      <svg viewBox="0 -150 600 710" id="stage">
+      <svg viewBox="0 0 600 560" id="stage">
         <g id="steam" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0">
           <path d="M210 360 q-18 -30 0 -60 q18 -30 0 -60"/><path d="M300 340 q-18 -30 0 -60 q18 -30 0 -60"/><path d="M390 360 q-18 -30 0 -60 q18 -30 0 -60"/>
         </g>
@@ -247,16 +261,9 @@ aside.show{transform:none}
           <path d="M190 300 C210 262 260 250 290 250" stroke="#f9c784" stroke-width="12" fill="none" stroke-linecap="round"/>
           <g fill="#fff8ea" stroke="#1b1b1b" stroke-width="2"><ellipse cx="250" cy="300" rx="7" ry="4"/><ellipse cx="300" cy="280" rx="7" ry="4" transform="rotate(20 300 280)"/><ellipse cx="350" cy="296" rx="7" ry="4" transform="rotate(-15 350 296)"/><ellipse cx="320" cy="320" rx="7" ry="4"/></g>
         </g>
-        <g id="spat">
-          <rect x="170" y="-26" width="260" height="26" rx="6" fill="#d7e0e6" stroke="#1b1b1b" stroke-width="6"/>
-          <path d="M400 -26 L440 -140" stroke="#1b1b1b" stroke-width="16" stroke-linecap="round"/>
-          <g id="bud">
-            <clipPath id="budclip"><ellipse cx="470" cy="-230" rx="90" ry="110"/></clipPath>
-            <ellipse cx="478" cy="-222" rx="90" ry="110" fill="#1b1b1b"/>
-            <ellipse cx="470" cy="-230" rx="90" ry="110" fill="#fff"/>
-            <image href="logo.webp" x="370" y="-352" width="200" height="244" preserveAspectRatio="xMidYMid slice" clip-path="url(#budclip)"/>
-            <ellipse cx="470" cy="-230" rx="90" ry="110" fill="none" stroke="#1b1b1b" stroke-width="6"/>
-          </g>
+        <g id="budScene" transform="translate(6 39)">
+          <rect x="14" y="360" width="236" height="41" rx="6" fill="#4a3a78" stroke="#1b1b1b" stroke-width="6"/>
+          <g id="budS"></g>
         </g>
         <g id="pow" opacity="0" transform="translate(150 290)">
           <path d="M0 -60 L16 -20 L58 -34 L30 0 L62 30 L18 24 L8 66 L-10 26 L-52 40 L-28 4 L-60 -24 L-18 -18 Z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="5"/>
@@ -327,6 +334,11 @@ const WHATSAPP = ''; // ej: '59899123456' para enviar el pedido por WhatsApp
 /* ================================================ */
 
 const $ = s => document.querySelector(s);
+
+/* Buda dibujito */
+const BUD=`<g class="bbody"><ellipse cx="95" cy="338" rx="52" ry="22" fill="#9b9bab" stroke="#1b1b1b" stroke-width="6"/><ellipse cx="205" cy="338" rx="52" ry="22" fill="#9b9bab" stroke="#1b1b1b" stroke-width="6"/><ellipse cx="150" cy="262" rx="108" ry="88" fill="#9b9bab" stroke="#1b1b1b" stroke-width="6"/><ellipse cx="150" cy="282" rx="64" ry="52" fill="#b9b9c8" stroke="#1b1b1b" stroke-width="5"/><path d="M96 206 Q150 262 204 206" stroke="#e9c46a" stroke-width="11" fill="none" stroke-dasharray="1 15" stroke-linecap="round"/><ellipse cx="62" cy="262" rx="22" ry="40" transform="rotate(18 62 262)" fill="#9b9bab" stroke="#1b1b1b" stroke-width="6"/></g><g class="bhead"><ellipse cx="86" cy="124" rx="13" ry="24" fill="#9b9bab" stroke="#1b1b1b" stroke-width="6"/><ellipse cx="214" cy="124" rx="13" ry="24" fill="#9b9bab" stroke="#1b1b1b" stroke-width="6"/><circle cx="150" cy="120" r="66" fill="#9b9bab" stroke="#1b1b1b" stroke-width="6"/><circle cx="150" cy="60" r="9" fill="#b9b9c8" stroke="#1b1b1b" stroke-width="4"/><g class="fa"><path d="M112 104 q15 -17 30 0 M158 104 q15 -17 30 0" stroke="#1b1b1b" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M112 128 q38 52 76 0 z" fill="#5a1f1f" stroke="#1b1b1b" stroke-width="6" stroke-linejoin="round"/><path d="M128 146 q22 -12 44 0 q-22 20 -44 0z" fill="#ef7b7b"/><circle cx="104" cy="126" r="9" fill="#e59aa0" opacity=".8"/><circle cx="196" cy="126" r="9" fill="#e59aa0" opacity=".8"/></g><g class="fb"><path d="M110 92 l26 10 l-26 10 M190 92 l-26 10 l26 10" stroke="#1b1b1b" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="118" y="132" width="64" height="26" rx="8" fill="#fff" stroke="#1b1b1b" stroke-width="6"/><path d="M134 132 v26 M150 132 v26 M166 132 v26" stroke="#1b1b1b" stroke-width="3"/><path d="M92 76 l20 8 M208 76 l-20 8" stroke="#1b1b1b" stroke-width="6" stroke-linecap="round"/></g></g><g class="arm"><path d="M215 200 L215 292" stroke="#1b1b1b" stroke-width="40" stroke-linecap="round"/><path d="M215 200 L215 292" stroke="#9b9bab" stroke-width="28" stroke-linecap="round"/><path d="M215 296 L215 352" stroke="#1b1b1b" stroke-width="12" stroke-linecap="round"/><circle cx="215" cy="300" r="21" fill="#9b9bab" stroke="#1b1b1b" stroke-width="6"/><rect x="168" y="348" width="94" height="18" rx="6" fill="#d7e0e6" stroke="#1b1b1b" stroke-width="6"/></g>`;
+document.getElementById('budHero').innerHTML=BUD;
+document.getElementById('budS').innerHTML=BUD;
 const fmt = n => '$ ' + n.toLocaleString('es-UY',{minimumFractionDigits:2});
 const cart = {};
 
@@ -420,31 +432,34 @@ $('#rail').innerHTML=POSTS.map(p=>`<article class="post" style="--r:${p.r}"><div
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(window.gsap&&window.ScrollTrigger&&!reduce){
   gsap.registerPlugin(ScrollTrigger);
-  gsap.to('.hero-logo',{yPercent:-18,rotate:-6,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-cartoon',{yPercent:-10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
   gsap.to('.word',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
   document.querySelector('#ticker2').style.animation='none';
   const tp=gsap.to('#ticker2',{xPercent:-50,duration:30,ease:'none',repeat:-1});
   ScrollTrigger.create({onUpdate:s=>{const v=s.getVelocity();gsap.to(tp,{timeScale:1+Math.min(Math.abs(v)/300,6)*(v<0?-1:1),duration:.2,overwrite:true});gsap.to(tp,{timeScale:1,duration:1,delay:.2})}});
 
-  gsap.set('#spat',{y:250});
+  gsap.set('#budS .fb',{opacity:0});gsap.set('#budS .arm',{rotate:-140,svgOrigin:'221 239'});
   const tl=gsap.timeline({scrollTrigger:{trigger:'#smash',start:'top top',end:'+=2600',scrub:.8,pin:true,
     onUpdate:s=>setStep(Math.min(3,Math.floor(s.progress*4.05)))}});
   tl.to('#bigword',{xPercent:-40,ease:'none',duration:10},0)
     .to('#meat',{rotate:8,duration:.6,yoyo:true,repeat:1,svgOrigin:'300 440'},0)
-    .to('#spat',{y:190,duration:1.2,ease:'power2.out'},.6)
-    .to('#bud',{rotate:-12,svgOrigin:'470 -230',duration:1.2},.6)
-    .to('#spat',{y:384,duration:.5,ease:'power4.in'},2)
-    .to('#bud',{rotate:6,svgOrigin:'470 -230',duration:.5},2)
+    .to('#budS .arm',{rotate:-172,svgOrigin:'221 239',duration:1.3,ease:'power2.out'},.6)
+    .to('#budS .bhead',{rotate:-7,svgOrigin:'156 219',duration:1.3},.6)
+    .to('#budS .arm',{rotate:-30,svgOrigin:'221 239',duration:.45,ease:'power4.in'},2)
+    .to('#budS .bhead',{rotate:9,svgOrigin:'156 219',duration:.45},2)
+    .to('#budS .fa',{opacity:0,duration:.05},2.35).to('#budS .fb',{opacity:1,duration:.05},2.35)
+    .to('#budS .bbody',{scaleY:.94,scaleX:1.04,svgOrigin:'156 399',duration:.15,yoyo:true,repeat:1},2.4)
     .to('#meat',{scaleX:2.1,scaleY:.4,svgOrigin:'300 440',duration:.5,ease:'power4.out'},2.4)
     .to('#pow',{opacity:1,scale:1.2,svgOrigin:'150 290',duration:.25},2.5)
     .to('#steam',{opacity:1,y:-20,duration:.6},2.3)
     .to('#pow',{opacity:0,duration:.3},2.7)
-    .to('#spat',{y:300,duration:.8,ease:'power2.out'},2.9)
-    .to('#bud',{rotate:0,svgOrigin:'470 -230',duration:.8},2.9)
-    .to('#spat',{opacity:0,duration:.5},5.2)
+    .to('#budS .arm',{rotate:-70,svgOrigin:'221 239',duration:.9,ease:'power2.out'},2.9)
+    .to('#budS .bhead',{rotate:0,svgOrigin:'156 219',duration:.9},2.9)
+    .to('#budS .fb',{opacity:0,duration:.05},3.2).to('#budS .fa',{opacity:1,duration:.05},3.2)
     .to('#crust',{opacity:1,duration:.5},3)
     .from('#cheese',{y:-220,duration:.8,ease:'bounce.out'},3.6).to('#cheese',{opacity:1,duration:.1},3.6)
     .to('#steam',{opacity:0,y:-60,duration:.6},5)
+    .to('#budScene',{opacity:0,duration:.5},5.2)
     .to('#griddle',{opacity:0,y:40,duration:.6},5.4)
     .to('#bunB',{opacity:1,duration:.4},5.6).from('#bunB',{y:80,duration:.6,ease:'back.out(2)'},5.6)
     .to('#crust',{opacity:0,duration:.3},5.6)
