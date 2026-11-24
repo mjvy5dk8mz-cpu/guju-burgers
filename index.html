@@ -81,7 +81,38 @@ nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:3px solid var
 .add:hover{background:var(--tomato);color:#fff}
 .add:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
 
-/* movida */
+
+/* smash (escena fijada) */
+.smash{background:var(--purple);color:#fff;border-bottom:3px solid var(--ink);overflow:hidden;padding-block:0}
+.smash .bigword{position:absolute;top:50%;left:0;transform:translateY(-50%);font-family:"Titan One";font-size:30vw;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.18);white-space:nowrap;pointer-events:none;line-height:1}
+.smash-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:4vw;align-items:center;min-height:100svh;position:relative}
+.steps{position:relative;min-height:250px}
+.step{position:absolute;inset:0;opacity:0;transform:translateY(30px);transition:opacity .45s,transform .45s}
+.step.on{opacity:1;transform:none}
+.step h2{font-size:clamp(40px,5.4vw,72px);color:var(--sun);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
+.step p{font-size:18px;max-width:42ch;margin:16px 0 0}
+.step .hand{color:var(--pink);font-size:22px;display:block;margin-bottom:8px}
+.dots{display:flex;gap:10px;margin-top:290px}
+.dots span{width:14px;height:14px;border-radius:50%;border:2px solid #fff;transition:background .3s}
+.dots span.on{background:var(--sun)}
+.stage svg{width:100%;max-height:72svh;display:block;overflow:hidden}
+@media(max-width:800px){.smash-grid{grid-template-columns:1fr;align-content:center;gap:16px;padding-top:12px}.stage{order:-1}.stage svg{max-height:42svh}.steps{min-height:200px}.dots{margin-top:210px}}
+
+/* movida (tira horizontal) */
+.hz{background:var(--tomato);color:#fff;border-block:3px solid var(--ink);overflow:hidden;padding-inline:0}
+.hz .head{padding-inline:max(5vw,16px)}
+.hz h2{-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
+.hz .head p{color:#fff}
+.rail{display:flex;gap:28px;padding:10px max(5vw,16px) 30px;width:max-content}
+.post{width:min(78vw,400px);flex:none;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:18px;box-shadow:8px 8px 0 var(--ink);padding:14px;transform:rotate(var(--r))}
+.post .ill{height:min(36vh,260px);border:3px solid var(--ink);border-radius:12px;overflow:hidden;background:var(--sun);display:grid;place-items:center}
+.post .ill img{width:100%;height:100%;object-fit:cover}
+.post .ill.logo img{object-fit:contain;padding:10px}
+.post h3{font-size:28px;margin:14px 4px 4px}
+.post p{margin:0 4px 6px;font-size:15px}
+@media(max-width:800px){.hz .viewport{overflow-x:auto;scroll-snap-type:x mandatory}.post{scroll-snap-align:center}}
+
+/* movida-old */
 .story{background:var(--purple);color:#fff;border-block:3px solid var(--ink);overflow:hidden}
 .story-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
 .story h2{font-size:clamp(38px,5.4vw,70px);color:var(--sun);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:4px 4px 0 var(--ink)}
@@ -168,6 +199,61 @@ aside.show{transform:none}
 
 <div class="tape" aria-hidden="true"><div class="track" id="ticker2"></div></div>
 
+<section class="smash band" id="smash" aria-label="Cómo hacemos el smash">
+  <div class="bigword" id="bigword" aria-hidden="true">SMASH SMASH SMASH</div>
+  <div class="wrap smash-grid">
+    <div>
+      <div class="steps" id="steps"></div>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <svg viewBox="0 0 600 560" id="stage">
+        <g id="steam" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0">
+          <path d="M210 360 q-18 -30 0 -60 q18 -30 0 -60"/><path d="M300 340 q-18 -30 0 -60 q18 -30 0 -60"/><path d="M390 360 q-18 -30 0 -60 q18 -30 0 -60"/>
+        </g>
+        <g id="griddle">
+          <rect x="40" y="440" width="520" height="40" rx="8" fill="#2b2b2b" stroke="#1b1b1b" stroke-width="5"/>
+          <rect x="52" y="446" width="496" height="6" rx="3" fill="#5c5c5c"/>
+          <rect x="90" y="480" width="26" height="60" fill="#1b1b1b"/><rect x="484" y="480" width="26" height="60" fill="#1b1b1b"/>
+          <g fill="#ff9f1c" opacity=".9"><path d="M140 540 q10 -30 20 0z"/><path d="M260 540 q12 -36 24 0z"/><path d="M380 540 q10 -30 20 0z"/></g>
+        </g>
+        <g id="bunB" opacity="0">
+          <rect x="146" y="440" width="308" height="56" rx="26" fill="#f2a541" stroke="#1b1b1b" stroke-width="6"/>
+          <rect x="160" y="444" width="280" height="10" rx="5" fill="#f9c784"/>
+        </g>
+        <g id="meat">
+          <circle cx="300" cy="370" r="70" fill="#9c5b3a" stroke="#1b1b1b" stroke-width="6"/>
+          <g fill="#7a3f22"><circle cx="276" cy="350" r="7"/><circle cx="318" cy="340" r="6"/><circle cx="300" cy="390" r="8"/><circle cx="330" cy="380" r="5"/><circle cx="265" cy="388" r="5"/></g>
+        </g>
+        <path id="crust" opacity="0" d="M150 440 q8 -16 18 -6 q10 -18 22 -4 q12 -14 22 -2 q12 -14 24 -2 q12 -12 24 0 q12 -14 24 -2 q12 -12 24 0 q12 -14 24 -2 q12 -14 22 2 q12 -12 20 6 q10 -6 12 10 z" fill="#4a2414" stroke="#1b1b1b" stroke-width="4" stroke-linejoin="round"/>
+        <g id="cheese" opacity="0">
+          <path d="M150 386 h300 l-14 26 l-18 -10 l-12 30 l-16 -22 l-20 12 l-10 -14 l-22 26 l-14 -24 l-18 8 l-10 -10 l-20 28 l-14 -26 l-20 14 l-14 -18 l-20 6 z" fill="#ffc21a" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+        </g>
+        <g id="pickles" opacity="0">
+          <ellipse cx="230" cy="378" rx="34" ry="10" fill="#7fb339" stroke="#1b1b1b" stroke-width="4"/>
+          <ellipse cx="300" cy="374" rx="34" ry="10" fill="#7fb339" stroke="#1b1b1b" stroke-width="4"/>
+          <ellipse cx="370" cy="378" rx="34" ry="10" fill="#7fb339" stroke="#1b1b1b" stroke-width="4"/>
+          <path d="M180 372 q60 -16 120 -4 q60 -14 122 4" stroke="#ef3e2b" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </g>
+        <g id="bunT" opacity="0">
+          <path d="M146 372 C146 220 454 220 454 372 Z" fill="#f2a541" stroke="#1b1b1b" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M190 300 C210 262 260 250 290 250" stroke="#f9c784" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <g fill="#fff8ea" stroke="#1b1b1b" stroke-width="2"><ellipse cx="250" cy="300" rx="7" ry="4"/><ellipse cx="300" cy="280" rx="7" ry="4" transform="rotate(20 300 280)"/><ellipse cx="350" cy="296" rx="7" ry="4" transform="rotate(-15 350 296)"/><ellipse cx="320" cy="320" rx="7" ry="4"/></g>
+        </g>
+        <g id="spat">
+          <rect x="170" y="-26" width="260" height="26" rx="6" fill="#d7e0e6" stroke="#1b1b1b" stroke-width="6"/>
+          <path d="M410 -26 L470 -150" stroke="#1b1b1b" stroke-width="14" stroke-linecap="round"/>
+          <rect x="452" y="-250" width="44" height="120" rx="16" fill="#ef3e2b" stroke="#1b1b1b" stroke-width="6" transform="rotate(25 474 -190)"/>
+        </g>
+        <g id="pow" opacity="0" transform="translate(470 250)">
+          <path d="M0 -60 L16 -20 L58 -34 L30 0 L62 30 L18 24 L8 66 L-10 26 L-52 40 L-28 4 L-60 -24 L-18 -18 Z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="5"/>
+          <text x="0" y="12" text-anchor="middle" font-family="Titan One" font-size="26" fill="#ef3e2b" stroke="#1b1b1b" stroke-width="1.5">¡PAF!</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
 <section class="band menu" id="menu">
   <div class="wrap">
     <div class="head reveal">
@@ -178,15 +264,12 @@ aside.show{transform:none}
   </div>
 </section>
 
-<section class="band story">
-  <div class="wrap story-grid">
-    <div class="reveal">
-      <span class="hand">la movida Guju</span>
-      <h2>Carne aplastada, sonrisa gigante.</h2>
-      <p>En Guju Burgers aplastamos la carne contra la plancha bien caliente para que quede crocante por fuera y jugosa por dentro. Nuestro Buda lo tiene claro: la felicidad se come con las dos manos.</p>
-    </div>
-    <div class="story-logo reveal"><div><img src="logo.webp" alt="Buda de Guju Burgers comiendo una hamburguesa"></div></div>
+<section class="band hz" id="movida" aria-label="La movida Guju">
+  <div class="head reveal">
+    <h2>La movida Guju</h2>
+    <p class="hand">seguí bajando, no frenes.</p>
   </div>
+  <div class="viewport" id="hzview"><div class="rail" id="rail"></div></div>
 </section>
 
 <section class="band cta">
@@ -212,6 +295,8 @@ aside.show{transform:none}
   </div>
 </aside>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 /* ====== CONFIG: editá precios y textos acá ====== */
 const PRODUCTS = [
@@ -296,6 +381,76 @@ const io = new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ 
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 render();
+
+/* pasos del smash */
+const STEPS=[
+ ['La bola','Arrancamos con una bola de carne fresca, sal y nada más. Así de simple.','paso uno'],
+ ['¡Smash!','Contra la plancha bien caliente, con la espátula y todo el peso del brazo.','paso dos'],
+ ['La costra','Los bordes se vuelven encaje crocante y arriba va el cheddar a derretirse.','paso tres'],
+ ['Armado','Pan, pepinillos, salsa y tapa. A comer con las dos manos, como el Buda.','paso cuatro'],
+];
+$('#steps').innerHTML=STEPS.map((s,i)=>`<div class="step${i?'':' on'}"><span class="hand">${s[2]}</span><h2>${s[0]}</h2><p>${s[1]}</p></div>`).join('');
+$('#dots').innerHTML=STEPS.map((_,i)=>`<span class="${i?'':'on'}"></span>`).join('');
+const setStep=i=>{document.querySelectorAll('.step').forEach((e,j)=>e.classList.toggle('on',j===i));document.querySelectorAll('#dots span').forEach((e,j)=>e.classList.toggle('on',j<=i))};
+
+/* tira horizontal */
+const POSTS=[
+ {t:'El Buda manda',d:'Nuestra mascota no negocia: una burger en cada mano.',img:'logo.webp',logo:true,r:'-2deg'},
+ {t:'Big Mac',d:'Doble carne, cheddar, lechuga y salsa especial.',img:'bigmac.webp',r:'1.5deg'},
+ {t:'Oklahoma Burger',d:'Cebolla aplastada junto con la carne hasta caramelizar.',img:'oklahoma.webp',r:'-1deg'},
+ {t:'Patty Melt',d:'Hamburguesa y sándwich tostado en uno solo.',img:'pattymelt.webp',r:'2deg'},
+ {t:'$400 cada una',d:'Elegí la tuya y pedila ya.',img:'logo.webp',logo:true,r:'-1.5deg'},
+];
+$('#rail').innerHTML=POSTS.map(p=>`<article class="post" style="--r:${p.r}"><div class="ill${p.logo?' logo':''}"><img src="${p.img}" alt="${p.t}"></div><h3>${p.t}</h3><p>${p.d}</p></article>`).join('');
+
+/* animaciones de scroll */
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.gsap&&window.ScrollTrigger&&!reduce){
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.to('.hero-logo',{yPercent:-18,rotate:-6,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.word',{yPercent:-12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  document.querySelector('#ticker2').style.animation='none';
+  const tp=gsap.to('#ticker2',{xPercent:-50,duration:30,ease:'none',repeat:-1});
+  ScrollTrigger.create({onUpdate:s=>{const v=s.getVelocity();gsap.to(tp,{timeScale:1+Math.min(Math.abs(v)/300,6)*(v<0?-1:1),duration:.2,overwrite:true});gsap.to(tp,{timeScale:1,duration:1,delay:.2})}});
+
+  gsap.set('#spat',{y:-60});
+  const tl=gsap.timeline({scrollTrigger:{trigger:'#smash',start:'top top',end:'+=2600',scrub:.8,pin:true,
+    onUpdate:s=>setStep(Math.min(3,Math.floor(s.progress*4.05)))}});
+  tl.to('#bigword',{xPercent:-40,ease:'none',duration:10},0)
+    .to('#meat',{rotate:8,duration:.6,yoyo:true,repeat:1,svgOrigin:'300 440'},0)
+    .to('#spat',{y:300,duration:1.4,ease:'power2.in'},.6)
+    .to('#spat',{y:384,duration:.5,ease:'power4.out'},2)
+    .to('#meat',{scaleX:2.1,scaleY:.4,svgOrigin:'300 440',duration:.5,ease:'power4.out'},2)
+    .to('#pow',{opacity:1,scale:1.2,svgOrigin:'470 250',duration:.25},2.1)
+    .to('#steam',{opacity:1,y:-20,duration:.6},2.3)
+    .to('#pow',{opacity:0,duration:.3},2.7)
+    .to('#spat',{y:-260,x:120,rotate:-10,duration:1,ease:'power2.in'},2.9)
+    .to('#crust',{opacity:1,duration:.5},3)
+    .from('#cheese',{y:-220,duration:.8,ease:'bounce.out'},3.6).to('#cheese',{opacity:1,duration:.1},3.6)
+    .to('#steam',{opacity:0,y:-60,duration:.6},5)
+    .to('#griddle',{opacity:0,y:40,duration:.6},5.4)
+    .to('#bunB',{opacity:1,duration:.4},5.6).from('#bunB',{y:80,duration:.6,ease:'back.out(2)'},5.6)
+    .to('#crust',{opacity:0,duration:.3},5.6)
+    .to('#pickles',{opacity:1,duration:.1},6.6).from('#pickles',{y:-220,duration:.7,ease:'bounce.out'},6.6)
+    .to('#bunT',{opacity:1,duration:.1},7.6).from('#bunT',{y:-320,rotate:-12,svgOrigin:'300 372',duration:.9,ease:'bounce.out'},7.6)
+    .to('#stage',{rotate:-4,scale:1.04,duration:.6,transformOrigin:'50% 80%'},8.8);
+
+  const mm=gsap.matchMedia();
+  mm.add('(min-width: 801px)',()=>{
+    const rail=$('#rail');
+    const dist=()=>rail.scrollWidth-innerWidth+40;
+    gsap.to(rail,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#movida',start:'top top',end:()=>'+='+dist(),scrub:1,pin:true,invalidateOnRefresh:true}});
+  });
+
+  gsap.from('.cta h2',{rotate:-6,scale:.85,ease:'none',scrollTrigger:{trigger:'.cta',start:'top bottom',end:'center center',scrub:true}});
+  gsap.from('.giant',{yPercent:60,scale:.8,ease:'none',scrollTrigger:{trigger:'footer',start:'top bottom',end:'bottom bottom',scrub:true}});
+  addEventListener('load',()=>ScrollTrigger.refresh());
+  document.fonts&&document.fonts.ready.then(()=>ScrollTrigger.refresh());
+}else{
+  document.querySelectorAll('.step').forEach(e=>{e.style.cssText='position:static;opacity:1;transform:none;margin-bottom:20px'});
+  document.querySelector('.steps').style.minHeight='0';document.querySelector('.dots').style.display='none';
+  document.querySelector('.hz .viewport').style.overflowX='auto';
+}
 
 /* splash (mínimo 1.6 s para que se vea la animación) */
 const t0 = performance.now();
