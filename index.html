@@ -207,7 +207,7 @@ aside.show{transform:none}
       <div class="dots" id="dots" aria-hidden="true"></div>
     </div>
     <div class="stage" aria-hidden="true">
-      <svg viewBox="0 0 600 560" id="stage">
+      <svg viewBox="0 -150 600 710" id="stage">
         <g id="steam" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0">
           <path d="M210 360 q-18 -30 0 -60 q18 -30 0 -60"/><path d="M300 340 q-18 -30 0 -60 q18 -30 0 -60"/><path d="M390 360 q-18 -30 0 -60 q18 -30 0 -60"/>
         </g>
@@ -242,10 +242,16 @@ aside.show{transform:none}
         </g>
         <g id="spat">
           <rect x="170" y="-26" width="260" height="26" rx="6" fill="#d7e0e6" stroke="#1b1b1b" stroke-width="6"/>
-          <path d="M410 -26 L470 -150" stroke="#1b1b1b" stroke-width="14" stroke-linecap="round"/>
-          <rect x="452" y="-250" width="44" height="120" rx="16" fill="#ef3e2b" stroke="#1b1b1b" stroke-width="6" transform="rotate(25 474 -190)"/>
+          <path d="M400 -26 L440 -140" stroke="#1b1b1b" stroke-width="16" stroke-linecap="round"/>
+          <g id="bud">
+            <clipPath id="budclip"><ellipse cx="470" cy="-230" rx="70" ry="88"/></clipPath>
+            <ellipse cx="478" cy="-222" rx="70" ry="88" fill="#1b1b1b"/>
+            <ellipse cx="470" cy="-230" rx="70" ry="88" fill="#fff"/>
+            <image href="logo.webp" x="390" y="-326" width="160" height="192" preserveAspectRatio="xMidYMid slice" clip-path="url(#budclip)"/>
+            <ellipse cx="470" cy="-230" rx="70" ry="88" fill="none" stroke="#1b1b1b" stroke-width="6"/>
+          </g>
         </g>
-        <g id="pow" opacity="0" transform="translate(470 250)">
+        <g id="pow" opacity="0" transform="translate(150 290)">
           <path d="M0 -60 L16 -20 L58 -34 L30 0 L62 30 L18 24 L8 66 L-10 26 L-52 40 L-28 4 L-60 -24 L-18 -18 Z" fill="#ffd23f" stroke="#1b1b1b" stroke-width="5"/>
           <text x="0" y="12" text-anchor="middle" font-family="Titan One" font-size="26" fill="#ef3e2b" stroke="#1b1b1b" stroke-width="1.5">¡PAF!</text>
         </g>
@@ -385,7 +391,7 @@ render();
 /* pasos del smash */
 const STEPS=[
  ['La bola','Arrancamos con una bola de carne fresca, sal y nada más. Así de simple.','paso uno'],
- ['¡Smash!','Contra la plancha bien caliente, con la espátula y todo el peso del brazo.','paso dos'],
+ ['¡Smash!','El Buda la aplasta contra la plancha bien caliente, con la espátula y todo su peso.','paso dos'],
  ['La costra','Los bordes se vuelven encaje crocante y arriba va el cheddar a derretirse.','paso tres'],
  ['Armado','Pan, pepinillos, salsa y tapa. A comer con las dos manos, como el Buda.','paso cuatro'],
 ];
@@ -413,18 +419,22 @@ if(window.gsap&&window.ScrollTrigger&&!reduce){
   const tp=gsap.to('#ticker2',{xPercent:-50,duration:30,ease:'none',repeat:-1});
   ScrollTrigger.create({onUpdate:s=>{const v=s.getVelocity();gsap.to(tp,{timeScale:1+Math.min(Math.abs(v)/300,6)*(v<0?-1:1),duration:.2,overwrite:true});gsap.to(tp,{timeScale:1,duration:1,delay:.2})}});
 
-  gsap.set('#spat',{y:-60});
+  gsap.set('#spat',{y:250});
   const tl=gsap.timeline({scrollTrigger:{trigger:'#smash',start:'top top',end:'+=2600',scrub:.8,pin:true,
     onUpdate:s=>setStep(Math.min(3,Math.floor(s.progress*4.05)))}});
   tl.to('#bigword',{xPercent:-40,ease:'none',duration:10},0)
     .to('#meat',{rotate:8,duration:.6,yoyo:true,repeat:1,svgOrigin:'300 440'},0)
-    .to('#spat',{y:300,duration:1.4,ease:'power2.in'},.6)
-    .to('#spat',{y:384,duration:.5,ease:'power4.out'},2)
-    .to('#meat',{scaleX:2.1,scaleY:.4,svgOrigin:'300 440',duration:.5,ease:'power4.out'},2)
-    .to('#pow',{opacity:1,scale:1.2,svgOrigin:'470 250',duration:.25},2.1)
+    .to('#spat',{y:190,duration:1.2,ease:'power2.out'},.6)
+    .to('#bud',{rotate:-12,svgOrigin:'470 -230',duration:1.2},.6)
+    .to('#spat',{y:384,duration:.5,ease:'power4.in'},2)
+    .to('#bud',{rotate:6,svgOrigin:'470 -230',duration:.5},2)
+    .to('#meat',{scaleX:2.1,scaleY:.4,svgOrigin:'300 440',duration:.5,ease:'power4.out'},2.4)
+    .to('#pow',{opacity:1,scale:1.2,svgOrigin:'150 290',duration:.25},2.5)
     .to('#steam',{opacity:1,y:-20,duration:.6},2.3)
     .to('#pow',{opacity:0,duration:.3},2.7)
-    .to('#spat',{y:-260,x:120,rotate:-10,duration:1,ease:'power2.in'},2.9)
+    .to('#spat',{y:300,duration:.8,ease:'power2.out'},2.9)
+    .to('#bud',{rotate:0,svgOrigin:'470 -230',duration:.8},2.9)
+    .to('#spat',{opacity:0,duration:.5},5.2)
     .to('#crust',{opacity:1,duration:.5},3)
     .from('#cheese',{y:-220,duration:.8,ease:'bounce.out'},3.6).to('#cheese',{opacity:1,duration:.1},3.6)
     .to('#steam',{opacity:0,y:-60,duration:.6},5)
