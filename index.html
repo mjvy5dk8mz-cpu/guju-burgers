@@ -44,7 +44,14 @@ nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:3px solid var
 
 /* hero */
 .hero{background:var(--sun);overflow:hidden;position:relative;display:grid;place-items:center;text-align:center;padding:48px 16px 90px;border-bottom:3px solid var(--ink);background-image:radial-gradient(circle,rgba(0,0,0,.09) 2px,transparent 2.5px);background-size:22px 22px}
-.hero-logo{width:clamp(170px,24vw,290px);aspect-ratio:1;background:#fff;border:4px solid var(--ink);border-radius:50%;padding:10px;box-shadow:8px 8px 0 var(--ink);animation:bob 3.2s ease-in-out infinite}
+.hero-logo{width:clamp(170px,24vw,290px);aspect-ratio:1;background:#fff;border:4px solid var(--ink);border-radius:50%;padding:10px;box-shadow:8px 8px 0 var(--ink)}
+.hero-scene{position:relative;display:grid;justify-items:center;padding-bottom:40px}
+.slam{position:relative;z-index:2;transform-origin:50% 100%;animation:slam 2.4s cubic-bezier(.5,0,.8,.4) infinite}
+.patty{position:absolute;bottom:2px;width:clamp(170px,23vw,270px);height:38px;background:#9c5b3a;border:4px solid var(--ink);border-radius:50%;box-shadow:0 7px 0 var(--ink);animation:flat 2.4s infinite}
+.paf{position:absolute;right:-26%;top:8%;z-index:3;font-family:"Titan One";font-size:clamp(28px,6vw,52px);color:#fff;background:var(--tomato,#ef3e2b);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:2px 12px;border-radius:12px;opacity:0;transform:rotate(10deg);animation:paf 2.4s infinite}
+@keyframes slam{0%,10%{transform:translateY(-14px) rotate(-5deg)}45%{transform:translateY(-34px) rotate(-7deg)}58%{transform:translateY(22px) scale(1.06,.88) rotate(3deg)}66%{transform:translateY(14px) scale(1.04,.92)}80%,100%{transform:translateY(-14px) rotate(-5deg)}}
+@keyframes flat{0%,52%{transform:scale(1,1)}58%,75%{transform:scale(1.35,.55)}100%{transform:scale(1,1)}}
+@keyframes paf{0%,56%{opacity:0;transform:rotate(10deg) scale(.4)}60%{opacity:1;transform:rotate(10deg) scale(1.15)}75%{opacity:1;transform:rotate(10deg) scale(1)}85%,100%{opacity:0;transform:rotate(10deg) scale(1)}}
 .hero-logo img{width:100%;height:100%;object-fit:contain}
 @keyframes bob{50%{transform:translateY(-12px) rotate(-3deg)}}
 .word{font-size:clamp(56px,13vw,170px);color:#fff;-webkit-text-stroke:clamp(3px,.5vw,6px) var(--ink);paint-order:stroke fill;text-shadow:clamp(4px,.8vw,10px) clamp(4px,.8vw,10px) 0 var(--ink);line-height:.9;display:block;margin-top:22px}
@@ -189,7 +196,7 @@ aside.show{transform:none}
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-logo"><img src="logo.webp" alt="Logo Guga Burgers"></div>
+  <div class="hero-scene"><div class="slam"><div class="hero-logo"><img src="logo.webp" alt="Logo Guga Burgers"></div></div><div class="patty"></div><div class="paf" aria-hidden="true">¡PAF!</div></div>
   <h1 class="word">GUGA <span class="o">BURGERS</span></h1>
   <div class="sub">SMASH BURGERS</div>
   <div class="tag hand">aplastadas en la plancha, comidas con las dos manos</div>
@@ -244,11 +251,11 @@ aside.show{transform:none}
           <rect x="170" y="-26" width="260" height="26" rx="6" fill="#d7e0e6" stroke="#1b1b1b" stroke-width="6"/>
           <path d="M400 -26 L440 -140" stroke="#1b1b1b" stroke-width="16" stroke-linecap="round"/>
           <g id="bud">
-            <clipPath id="budclip"><ellipse cx="470" cy="-230" rx="70" ry="88"/></clipPath>
-            <ellipse cx="478" cy="-222" rx="70" ry="88" fill="#1b1b1b"/>
-            <ellipse cx="470" cy="-230" rx="70" ry="88" fill="#fff"/>
-            <image href="logo.webp" x="390" y="-326" width="160" height="192" preserveAspectRatio="xMidYMid slice" clip-path="url(#budclip)"/>
-            <ellipse cx="470" cy="-230" rx="70" ry="88" fill="none" stroke="#1b1b1b" stroke-width="6"/>
+            <clipPath id="budclip"><ellipse cx="470" cy="-230" rx="90" ry="110"/></clipPath>
+            <ellipse cx="478" cy="-222" rx="90" ry="110" fill="#1b1b1b"/>
+            <ellipse cx="470" cy="-230" rx="90" ry="110" fill="#fff"/>
+            <image href="logo.webp" x="370" y="-352" width="200" height="244" preserveAspectRatio="xMidYMid slice" clip-path="url(#budclip)"/>
+            <ellipse cx="470" cy="-230" rx="90" ry="110" fill="none" stroke="#1b1b1b" stroke-width="6"/>
           </g>
         </g>
         <g id="pow" opacity="0" transform="translate(150 290)">
