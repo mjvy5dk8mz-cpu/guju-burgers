@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guju Burgers - Smash Burgers</title>
-<meta name="description" content="Guju Burgers: smash burgers. Elegí entre la Big Mac y la Oklahoma.">
+<meta name="description" content="Guju Burgers: smash burgers. Elegí entre la Big Mac, la Oklahoma y la Patty Melt.">
 <link rel="icon" href="logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -77,19 +77,21 @@ section{scroll-margin-top:120px}
 
 /* products */
 .sec-title{color:#fff;font-size:22px;margin:8px 0 14px;font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,360px));justify-content:center;gap:20px;margin-bottom:32px}
 .card{background:#fff;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px}
-.pic{position:relative;border-radius:10px;height:230px;background:linear-gradient(135deg,#8d8f98,#cfd0d6 50%,#8d8f98);display:grid;place-items:center;overflow:hidden}
-.pic img{width:100%;height:100%;object-fit:cover}
+.pic{position:relative;border-radius:10px;aspect-ratio:1/1;background:linear-gradient(135deg,#8d8f98,#cfd0d6 50%,#8d8f98);display:grid;place-items:center;overflow:hidden}
+.pic img{width:100%;height:100%;object-fit:cover;object-position:center 55%}
 .add{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:8px;background:var(--brand);color:#fff;font-size:18px;font-weight:700}
 .add:hover{background:var(--brand-dark)}
 .card h3{font-size:17px}
 .card p{text-transform:uppercase;font-size:13px;color:var(--muted);letter-spacing:.2px;flex:1}
 .card p.about{text-transform:none;font-size:14px;color:var(--ink);flex:none;letter-spacing:0}
+.toast{width:150px;height:22px;background:linear-gradient(#e0a24f,#b9742a);border-radius:10px;margin-top:-2px}
+.onion-c{width:146px;height:8px;background:#b8741d;border-radius:6px;margin-top:-2px}
 .price{font-family:'Poppins';font-weight:600;font-size:17px}
 
 /* css burger */
-.burger{width:170px;display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 10px 8px rgba(0,0,0,.35))}
+.burger{width:170px;transform:scale(1.35);display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 10px 8px rgba(0,0,0,.35))}
 .bun-t{width:150px;height:60px;background:radial-gradient(circle at 35% 25%,#f0a343,#c96a1c);border-radius:80px 80px 12px 12px;position:relative}
 .bun-t::after{content:"";position:absolute;top:14px;left:38px;width:6px;height:3px;background:#fde7b8;border-radius:50%;box-shadow:24px 6px 0 #fde7b8,50px -2px 0 #fde7b8,64px 12px 0 #fde7b8,14px 20px 0 #fde7b8}
 .lettuce{width:164px;height:12px;background:#6fb83c;border-radius:10px;margin-top:-4px;clip-path:polygon(0 0,100% 0,100% 60%,92% 100%,80% 60%,68% 100%,56% 60%,44% 100%,32% 60%,20% 100%,8% 60%,0 100%)}
@@ -157,7 +159,7 @@ footer{background:#fff;text-align:center;padding:22px;font-size:14px;color:var(-
   <div>
     <img class="hero-logo" src="logo.webp" alt="Logo Guju Burgers">
     <h1>GUJU BURGERS</h1>
-    <p>Smash burgers · Big Mac y Oklahoma</p>
+    <p>Smash burgers · Big Mac, Oklahoma y Patty Melt</p>
   </div>
 </div>
 
@@ -166,6 +168,7 @@ footer{background:#fff;text-align:center;padding:22px;font-size:14px;color:var(-
   <div class="scroller" id="scroller">
     <a href="#clasicas" class="active">Big Mac</a>
     <a href="#oklahoma">Oklahoma</a>
+    <a href="#pattymelt">Patty Melt</a>
   </div>
   <button class="arrow" id="next" aria-label="Siguiente">›</button>
 </div>
@@ -179,6 +182,11 @@ footer{background:#fff;text-align:center;padding:22px;font-size:14px;color:var(-
   <section id="oklahoma">
     <h2 class="sec-title">Oklahoma Burger</h2>
     <div class="grid" data-list="oklahoma"></div>
+  </section>
+
+  <section id="pattymelt">
+    <h2 class="sec-title">Patty Melt</h2>
+    <div class="grid" data-list="pattymelt"></div>
   </section>
 </main>
 
@@ -198,12 +206,16 @@ footer{background:#fff;text-align:center;padding:22px;font-size:14px;color:var(-
 /* ====== CONFIG: editá precios y textos acá ====== */
 const PRODUCTS = [
   { id:'clasica', cat:'clasica', name:'Big Mac',
-    desc:'Smash burger x2 + cheddar + lechuga + pepinillos + cebolla + salsa especial', price:490,
+    desc:'Smash burger x2 + cheddar + lechuga + pepinillos + cebolla + salsa especial', price:400,
     about:'Nuestra versión de la doble clásica: dos carnes smash bien doradas, cheddar derretido, lechuga fresca, pepinillos crocantes y salsa especial, todo en pan suave.',
     layers:['bun-t','cheese','patty','cheese','patty second','bun-b'] },
   { id:'oklahoma', cat:'oklahoma', name:'Oklahoma Burger',
-    desc:'Smash burger x2 + cebolla caramelizada + cheddar', price:510, img:'oklahoma.webp',
+    desc:'Smash burger x2 + cebolla caramelizada + cheddar', price:400, img:'oklahoma.webp',
     about:'Hamburguesa típica de Oklahoma (EE. UU.): la cebolla fina se aplasta junto con la carne en la plancha y se cocina con ella, quedando dulce, caramelizada y llena de sabor.' },
+  { id:'pattymelt', cat:'pattymelt', name:'Patty Melt',
+    desc:'Smash burger x2 + cheddar + cebolla caramelizada + pan tostado', price:400,
+    about:'Mitad hamburguesa, mitad sándwich tostado: carne jugosa, queso cheddar bien derretido y cebolla caramelizada entre dos rebanadas de pan doradas en la plancha con manteca.',
+    layers:['toast','cheese','patty','onion-c','patty second','cheese','toast'] },
 ];
 const WHATSAPP = ''; // ej: '59899123456' para enviar el pedido por WhatsApp
 /* ========================================================= */
